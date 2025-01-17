@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 
 const db_url = process.env.DB_URL.replace(
-    "<password>",
+    "<db_password>",
     process.env.DB_PASSWORD
 )
 

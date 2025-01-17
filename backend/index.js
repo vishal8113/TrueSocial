@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000
 
 const routes = require("./Routes/index")
 
-// const dbConnect = require("./Config/dbConfig")
+const dbConnect = require("./Config/dbConfig")
 
 app.use(helmet())
 app.use(cors())
@@ -43,7 +43,7 @@ app.get("/health",(req,res) => {
     res.status(200).json({status:"ok"})
 })
 
-// dbConnect()
+dbConnect()
 
 server.listen(PORT,() => {
     console.log(`Server is started at port ${PORT}`)
