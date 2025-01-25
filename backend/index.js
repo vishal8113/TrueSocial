@@ -1,12 +1,17 @@
 require("dotenv").config()
 
 const express  = require("express")
-const {createServer} = require("http")
-const app = express()
 
+
+const {createServer} = require("http")  
+const app = express()
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 const helmet = require("helmet")
 const cors = require("cors")
 const rateLimit = require("express-rate-limit")
+const otpRoutes =require("./Routes/otpRoutes");
+app.use('/api/otp',otpRoutes);
 
 const server = createServer(app)
 
