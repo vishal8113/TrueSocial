@@ -21,6 +21,16 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required!"],
     },
+    otp:
+    {
+        type:Number,
+    },
+    createdAt:
+    {
+        type:Date,
+        default:Date.now,
+        expires: 60*2,
+    },
 });
 
 const User = mongoose.model("user", userSchema);
