@@ -55,10 +55,12 @@ try{
                 message:"Invalid Password"
             })
         }
+        const token = createToken(user._id);
         return res.status(200).json(
             {
                 status: "success",
-                message: "logged in successfully"
+                message: "logged in successfully",
+                token: token
             }
         )
 }
