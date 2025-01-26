@@ -1,11 +1,6 @@
-// const sessionToUser = new Map();
 require('dotenv').config();
 const jwt = require("jsonwebtoken");
 const secret = process.env.SECRET;
-
-// exports.setUser(id,user){
-//   sessionToUser.set(id,user);
-// }
 
 exports.setUser = (user) => {
   const payload = {

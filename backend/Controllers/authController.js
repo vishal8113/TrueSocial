@@ -36,7 +36,6 @@ exports.register = async (req, res, next) => {
 
 // User Login Controller
 exports.login = async (req, res, next) => {
-    // Write Code..
 try{
     const {email, password}=req.body;
     const user= await User.findOne({email})
@@ -75,24 +74,34 @@ catch(err)
 }
 }
 
-// Otp Route
+// Otp Generation
 const generateOtp = ()=>
     {
-        return Math.floor(100000 + Math.random() * 900000);
         //This will generate random  6 digit otp
+        return Math.floor(100000 + Math.random() * 900000);
     }
     
     exports.otpController =
          async(req,res)=>{
             try{
                 const {email} = req.body; //Getting email from body
+
+                const user = await User.findOne({email});
+
+                if(user){
+                    const otp=generateOtp(); //Now we are generating otp
+                    res.status(200).json({
+                       success:true,
+                       message:"OTP Generated Successfully",
+                       otp: otp
+                   });
+                }else{
+                    return res.status(402).json({
+                        success:false,
+                        message:"User does not exist"
+                    })
+                }
                 
-                const otp=generateOtp(); //Now we are generating otp
-                res.status(200).json({
-                    success:true,
-                    message:"OTP Generated Successfully",
-                    otp: otp
-                });
             }
             catch(err)
             {
