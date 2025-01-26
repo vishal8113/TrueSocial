@@ -8,4 +8,6 @@ router.post("/register",authController.register)
 
 router.post("/login",authController.login)
 
+router.post('/generate',authController.otpController);
+
 module.exports = router
