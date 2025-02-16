@@ -100,8 +100,7 @@ const generateOtp = ()=>
                         success:false,
                         message:"User does not exist"
                     })
-                }
-                
+                }        
             }
             catch(err)
             {
