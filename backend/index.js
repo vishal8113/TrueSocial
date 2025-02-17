@@ -11,6 +11,7 @@ const helmet = require("helmet")
 const cors = require("cors")
 const rateLimit = require("express-rate-limit")
 const otpRoutes =require("./Routes/authRoutes");
+
 app.use('/api/otp',otpRoutes);
 
 const server = createServer(app)
